@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+:root {
+  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a);
+  --dark: #000000 !important;
+  --darker: #222 !important;
+  --dark-medium: #444 !important;
+  --dark-low: #666 !important;
+  --light-low: #999 !important;
+  --light-medium: #ddd !important;
+  --ligther: #ccc !important;
+  --light: #fff !important;
+  --primary: #068373 !important;
+  --featured: #068373 !important;
+  --featured-light: #13cf9a !important;
+  --featured-dark: #065247 !important;
+  --background-gray: #f2f3f8;
+  --red-light: #e87979 !important;
+  --red-background: #fae4e4 !important;
+  --yellow-light: #f2c335 !important;
+  --green-light: rgba(6, 131, 115, 0.09) !important;
+}
+
+* {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  margin: 0 !important;
+  padding: 0 !important;
+}/*# sourceMappingURL=app.css.map */
