@@ -11,8 +11,10 @@
 }
 
 body {
-  zoom: 86%;
-  background-color: var(--background-gray);
+  zoom: 86% !important;
+  background-color: var(--background-gray) !important;
+  cursor: pointer !important;
+  overflow: auto !important;
 }
 
 .h4-hub {
