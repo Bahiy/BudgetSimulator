@@ -1,5 +1,5 @@
 {
-  "name": "expenses2",
+  "name": "budgetsimulator",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "v-money": "^0.8.1",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
+    "vue-slider-component": "^3.2.24",
     "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
