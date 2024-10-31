@@ -1,22 +1,27 @@
 <template>
-  <div class="home ">
-    teste
+  <div>
+    <Header />
+    <layout-build-plan />
   </div>
 </template>
 
 <script>
+import Header from "../components/layout/LayoutHeader.vue";
+import LayoutBuildPlan from "../components/layout/LayoutBuildPlan.vue";
 export default {
   name: "Home",
+  components: {
+    Header,
+    LayoutBuildPlan
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  background-color: aqua !important;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   background-color: var(--lighter);
-
 }
 </style>

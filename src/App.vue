@@ -2,14 +2,11 @@
   <div id="app">
     <div class="container-fluid">
       <div class="row">
-
-        <div class="col">
+        <div class="navigation-sidebar">
           <layout-navigation />
         </div>
 
-        <div class="col-9">
-          <router-view />
-        </div>
+        <!-- <router-view /> -->
       </div>
     </div>
   </div>
@@ -29,5 +26,14 @@ export default {
   min-height: 100vh;
   color: var(--darker);
   background-color: var(--light);
+}
+.navigation-sidebar {
+  box-sizing: content-box;
+  padding: 10px 5px !important;
+  position: fixed;
+  overflow: hidden auto;
+  width: 15rem !important;
+  height: 100% !important;
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.1);
 }
 </style>

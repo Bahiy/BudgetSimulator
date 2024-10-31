@@ -1,23 +1,25 @@
 <template>
-  <div class="navigation-sidebar">
+  <div>
     <ul class="nav flex-column">
       <img class="img-fluid" src="../../assets/nav-logo.png" alt="Logo" />
 
-      <div class="user-info">
+      <div class="user-info col" style="display: flex">
         <div class="icon-user">
-          <img src="../../assets/SDR4.png" width="45px" alt="User Icon" />
+          <li class="nav-item">
+            <img src="../../assets/SDR4.png" width="45px" alt="User Icon" />
+          </li>
         </div>
         <div class="user-container">
           <div class="affiliate-info">
-            <p class="name-user"><b>SDR4</b></p>
+            <p class="name-user">SDR4</p>
             <p class="emissions-user">SDR</p>
           </div>
-        </div>
 
-        <div>
-          <button class="btn btn-notify" aria-label="Notificações">
-            <i class="fa-solid fa-bell fa-1x" />
-          </button>
+          <div>
+            <button class="btn btn-notify" aria-label="Notificações">
+              <i class="fa-solid fa-bell fa-1x" />
+            </button>
+          </div>
         </div>
       </div>
       <li class="nav-item"><i class="fa-solid fa-fire"></i>Leads</li>
@@ -36,76 +38,97 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-.navigation-sidebar {
-  padding: 0 0.5rem;
-  position: fixed;
-  overflow: hidden auto;
-  width: 245px;
-  height: 100% !important;
-  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.1);
-  .nav {
-    z-index: 100;
-    height: 100vh;
-    color: var(--dark);
-    .img-fluid {
-      padding: 41px 27px !important;
-    }
+.nav {
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  padding-left: 0.4rem !important;
+  padding-right: 0.4rem !important;
+  color: var(--dark);
+  gap: 0.5rem;
 
-    .user-info {
-      gap: 16px;
+  .img-fluid {
+    width: 100% !important;
+    padding: 1.5rem 2.5rem !important;
+  }
+
+  .user-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--green-light);
+    border-radius: 9px;
+    margin: 0 -1rem 0.3rem 0.2rem !important;
+
+    .user-container {
       display: flex;
-      width: 100%;
-      background-color: var(--green-light);
-      padding: 10px 10px;
-      border-radius: 9px;
-      margin: 0 -15px 5px 5px !important;
-      align-items: center;
-      justify-items: center;
+      gap: 25px;
+    }
 
-      .btn-notify {
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-        .notification-counter {
-          padding-top: 2px;
-          width: 20px;
-          height: 19px;
-          border-radius: 5px;
-          margin-top: -20px;
-          margin-left: 15px;
-          color: #fff;
-          font-size: 10px;
-        }
+    .affiliate-info {
+      gap: 0.5rem;
+
+      .name-user,
+      .emissions-user {
+        font-size: 11px;
+        font-weight: 600 !important;
+        margin: 3px 0 !important;
+        color: var(--dark);
       }
     }
 
-    .nav-item {
-      color: var(--dark-low);
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 1rem !important;
-      border-radius: 12px ;
-
-      &.active {
-        color: var(--featured) !important;
-        background-color: var(--green-light) !important;
-      }
-
-      &:hover {
-        color: var(--featured);
-        background-color: var(--green-light);
-      }
-    }
-    .exit {
-      color: var(--red-light) !important;
-
-      &:hover {
-        color: var(--featured);
-        background-color: var(--red-background);
+    .btn-notify {
+      padding: 5px 12px !important;
+      background-color: var(--light);
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      .notification-counter {
+        padding-top: 2px !important;
+        width: 20px !important;
+        height: 19px !important;
+        border-radius: 5px;
+        margin-top: -20px !important;
+        margin-left: 15px !important;
+        color: #fff;
+        font-size: 10px;
       }
     }
   }
+
+  .nav-item {
+    font-size: 16px;
+    font-weight: 300 !important;
+    color: var(--dark-low);
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0 0.7rem 1rem !important;
+    border-radius: 7px;
+
+    &.active {
+      margin-right: -25px !important;
+      color: var(--featured) !important;
+      background-color: var(--green-light) !important;
+    }
+
+    &:hover {
+      color: var(--featured);
+      background-color: var(--green-light);
+    }
+  }
+  .exit {
+    color: var(--red-light) !important;
+
+    &:hover {
+      color: var(--featured);
+      background-color: var(--red-background);
+    }
+  }
 }
+
 p {
   font-size: 11px;
 }
