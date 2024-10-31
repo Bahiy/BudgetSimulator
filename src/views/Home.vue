@@ -1,5 +1,5 @@
 <template>
-   <div>
+  <div class="home">
     <Header />
     <layout-build-plan />
   </div>
@@ -18,9 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--lighter);
-}
+
+</style>

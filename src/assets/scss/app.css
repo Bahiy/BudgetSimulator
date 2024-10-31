@@ -20,6 +20,7 @@
   --red-background: #fae4e4 !important;
   --yellow-light: #f2c335 !important;
   --green-light: rgba(6, 131, 115, 0.09) !important;
+  --text-invert: #fff !important;
 }
 
 * {
@@ -46,4 +47,25 @@ body {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
+}
+
+.btn-custom {
+  background-color: black !important;
+  color: var(--text-invert);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 0.5rem;
+  height: 2.25rem;
+  padding: 8px 14px !important;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+.btn-custom:hover {
+  background-color: var(--dark-medium) !important;
 }/*# sourceMappingURL=app.css.map */

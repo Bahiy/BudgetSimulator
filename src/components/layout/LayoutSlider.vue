@@ -46,7 +46,7 @@
       </div>
     </div>
     <div>
-      <h2 class="h2-hub mb-0">{{ value }} Clientes</h2>
+      <h2 class="h2-hub">{{ value }} clientes</h2>
     </div>
   </div>
 </template>
@@ -163,16 +163,14 @@ export default {
   position: relative;
   width: 100%;
   background-color: #e9e9e9;
-  height: 16px !important;
+  height: 0.8rem !important;
   border-radius: 1rem;
 }
 .vue-slider-process {
   z-index: 1;
-  padding: 0.8rem;
   position: absolute;
   border-radius: 15px;
   background-color: var(--featured-light) !important;
-  border: 2px solid #fff;
   box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
 }
 .vue-slider-dot {
@@ -200,4 +198,6 @@ export default {
   background-color: #dfdfdf;
   margin: auto;
 }
+
+
 </style>

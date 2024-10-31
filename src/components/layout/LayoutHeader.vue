@@ -18,6 +18,7 @@ export default {};
   margin-left: 15.7rem !important;
 
   padding: 1.5rem !important;
+  margin-left: 15.7rem !important;
   background-color: var(--featured-light) !important;
   color: var(--light);
   .title {
