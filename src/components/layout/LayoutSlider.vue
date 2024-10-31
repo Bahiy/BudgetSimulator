@@ -46,7 +46,7 @@
       </div>
     </div>
     <div>
-      <h2 class="h2-hub">Clientes {{ value }}</h2>
+      <h2 class="h2-hub mb-0">{{ value }} Clientes</h2>
     </div>
   </div>
 </template>

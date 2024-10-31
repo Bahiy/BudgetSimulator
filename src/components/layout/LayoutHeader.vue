@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="header-page-container"
-  >
+  <div class="header-page-container">
     <div class="d-flex align-items-center gap-24">
       <h2 class="title">Contrate agora</h2>
     </div>
@@ -17,6 +15,8 @@ export default {};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-left: 15.7rem !important;
+
   padding: 1.5rem !important;
   background-color: var(--featured-light) !important;
   color: var(--light);

@@ -41,9 +41,10 @@ export default {
   flex: 1;
   overflow: hidden;
   .main-content {
+    margin-left: 16rem !important;
     overflow-y: auto;
     padding: 3rem !important;
-    width: 55% !important;
+    width: 70% !important;
   }
   .sidebar {
     width: 40%;

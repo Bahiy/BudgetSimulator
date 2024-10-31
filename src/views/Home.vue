@@ -1,5 +1,5 @@
 <template>
-  <div>
+   <div>
     <Header />
     <layout-build-plan />
   </div>
@@ -24,4 +24,3 @@ export default {
   flex-direction: column;
   background-color: var(--lighter);
 }
-</style>
