@@ -199,5 +199,9 @@ export default {
   margin: auto;
 }
 
+.h2-hub{
+  margin-bottom: 1.2rem !important;
+}
+
 
 </style>
