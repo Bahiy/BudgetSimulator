@@ -1,207 +1,97 @@
 <template>
-  <div>
-    <div
-      class="w-100 mb-3 vue-slider vue-slider-ltr"
-      :style="{ padding: '7px 0', width: 'auto', height: '4px' }"
-    >
-      <div class="vue-slider-rail" @mousedown="onMouseDown">
-        <div class="vue-slider-process" :style="processStyle"></div>
-        <div class="vue-slider-marks">
-          <div
-            v-for="mark in marks"
-            :key="mark.value"
-            :class="[
-              'vue-slider-mark',
-              { 'vue-slider-mark-active': mark.value === value },
-            ]"
-            :style="{ height: '100%', width: '4px', left: mark.left }"
-          >
-            <div
-              :class="[
-                'vue-slider-mark-step',
-                { 'vue-slider-mark-step-active': mark.value === value },
-              ]"
-            ></div>
-            <div
-              :class="[
-                'vue-slider-mark-label',
-                { 'vue-slider-mark-label-active': mark.value === value },
-              ]"
-            ></div>
-          </div>
-        </div>
-        <div
-          class="vue-slider-dot vue-slider-dot-hover"
-          role="slider"
-          :aria-valuenow="value"
-          :aria-valuemin="1"
-          :aria-valuemax="2000"
-          aria-orientation="horizontal"
-          tabindex="0"
-          :style="dotStyle"
-          @mousedown="onMouseDown"
-        >
-          <div class="vue-slider-dot-handle"></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h2 class="h2-hub">{{ value }} clientes</h2>
-    </div>
+  <div class="slider">
+    <vue-slider
+      :disabled="planSelected"
+      :tooltip="'none'"
+      :height="'1rem'"
+      :adsorb="true"
+      :dotSize="25"
+      :contained="true"
+      v-model="value"
+      :data="clientNumbers"
+      @change="emitPrices"
+    />
+    <div class="h2-hub total">{{ value }} Clientes</div>
   </div>
 </template>
 
 <script>
+import VueSlider from "vue-slider-component";
+import { usePricesStore } from "@/stores/store"; // Importa o store
+
 export default {
+  components: {
+    VueSlider,
+  },
   data() {
     return {
+      planSelected: false,
       value: 1,
-      dragging: false,
-      marks: [
-        { value: 1, left: "0%" },
-        { value: 2, left: "0.050025%" },
-        { value: 3, left: "0.10005%" },
-        { value: 4, left: "0.150075%" },
-        { value: 5, left: "0.2001%" },
-        { value: 10, left: "0.450225%" },
-        { value: 20, left: "0.950475%" },
-        { value: 30, left: "1.45073%" },
-        { value: 50, left: "2.45123%" },
-        { value: 80, left: "3.95198%" },
-        { value: 100, left: "4.95248%" },
-        { value: 150, left: "7.45373%" },
-        { value: 200, left: "9.95498%" },
-        { value: 250, left: "12.4562%" },
-        { value: 300, left: "14.9575%" },
-        { value: 350, left: "17.4587%" },
-        { value: 400, left: "19.96%" },
-        { value: 450, left: "22.4612%" },
-        { value: 500, left: "24.9625%" },
-        { value: 600, left: "29.965%" },
-        { value: 700, left: "34.9675%" },
-        { value: 800, left: "39.97%" },
-        { value: 900, left: "44.9725%" },
-        { value: 1000, left: "49.975%" },
-        { value: 1100, left: "54.9775%" },
-        { value: 1200, left: "59.98%" },
-        { value: 1300, left: "64.9825%" },
-        { value: 1400, left: "69.985%" },
-        { value: 1500, left: "74.9875%" },
-        { value: 1600, left: "79.99%" },
-        { value: 1700, left: "84.9925%" },
-        { value: 1800, left: "89.995%" },
-        { value: 1900, left: "94.9975%" },
-        { value: 2000, left: "100%" },
+      clientNumbers: [
+        1, 2, 3, 4, 5, 10, 20, 30, 50, 80, 100, 150, 200, 250, 300, 350, 400,
+        450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600,
+        1700, 1800, 1900, 2000,
+      ],
+      monitorhubPrices: [
+        87.33, 71.25, 60.31, 51.63, 45.95, 24.98, 14.45, 10.78, 7.86, 5.63,
+        5.03, 4.43, 4.1, 3.83, 3.73, 3.63, 3.51, 3.4, 3.31, 3.29, 3.22, 3.18,
+        3.13, 3.1, 3.09, 3.07, 3.04, 3.03, 3.02, 3.02, 3.01, 2.99, 2.98, 2.97,
+      ],
+      connecthubPrices: [
+        38.81, 31.67, 26.8, 22.95, 20.42, 11.1, 6.42, 4.79, 3.49, 2.5, 2.24,
+        1.97, 1.82, 1.7, 1.66, 1.61, 1.56, 1.51, 1.47, 1.46, 1.43, 1.41, 1.39,
+        1.38, 1.37, 1.36, 1.35, 1.35, 1.34, 1.34, 1.34, 1.33, 1.32, 1.32,
+      ],
+      xmlhubPrices: [
+        67.92, 55.42, 46.91, 40.16, 35.74, 19.43, 11.24, 8.39, 6.11, 4.38, 3.91,
+        3.44, 3.19, 2.98, 2.9, 2.82, 2.73, 2.65, 2.58, 2.56, 2.51, 2.47, 2.44,
+        2.41, 2.4, 2.39, 2.37, 2.36, 2.35, 2.34, 2.34, 2.32, 2.32, 2.31,
       ],
     };
   },
-  computed: {
-    processStyle() {
-      return {
-        height: "100%",
-        top: "0px",
-        left: "0%",
-        width: `${(this.value / 2000) * 100}%`,
-      };
-    },
-    dotStyle() {
-      return {
-        width: "14px",
-        height: "14px",
-        transform: "translate(-50%, -50%)",
-        top: "50%",
-        left: `${(this.value / 2000) * 100}%`,
-      };
-    },
+  setup() {
+    const pricesStore = usePricesStore(); // Usa o store
+    return { pricesStore };
+  },
+
+  created() {
+    this.$root.$on("PlanSelected::true", () => {
+      this.planSelected = true;
+    });
   },
   methods: {
-    setValue(newValue) {
-      // Limita o valor apenas para os valores dentro dos marks
-      const closestMark = this.marks.reduce((prev, curr) =>
-        Math.abs(curr.value - newValue) < Math.abs(prev.value - newValue)
-          ? curr
-          : prev
-      );
-      this.value = closestMark.value;
-    },
-    onMouseDown(event) {
-      this.dragging = true;
-      this.updateValueFromEvent(event);
-      document.addEventListener("mousemove", this.onMouseMove);
-      document.addEventListener("mouseup", this.onMouseUp);
-    },
-    onMouseMove(event) {
-      if (this.dragging) {
-        this.updateValueFromEvent(event);
-      }
-    },
-    onMouseUp() {
-      this.dragging = false;
-      document.removeEventListener("mousemove", this.onMouseMove);
-      document.removeEventListener("mouseup", this.onMouseUp);
-    },
-    updateValueFromEvent(event) {
-      const sliderRect = this.$el.getBoundingClientRect();
-      const offsetX = event.clientX - sliderRect.left;
-      const newValue = Math.round((offsetX / sliderRect.width) * 2000);
+    emitPrices() {
+      const clientIndex = this.clientNumbers.indexOf(this.value);
+      if (clientIndex !== -1) {
+        const xmlhubPrice = (
+          this.value * this.xmlhubPrices[clientIndex]
+        ).toFixed(2);
+        const monitorhubPrice = (
+          this.value * this.monitorhubPrices[clientIndex]
+        ).toFixed(2);
+        const connecthubPrice = (
+          this.value * this.connecthubPrices[clientIndex]
+        ).toFixed(2);
+        const totalClients = this.value;
 
-      // Aqui, chamamos a função `setValue` para atualizar o valor para o mark mais próximo
-      this.setValue(newValue);
+        // Atualiza os preços no store
+        this.pricesStore.setPrices(
+          totalClients,
+          xmlhubPrice,
+          monitorhubPrice,
+          connecthubPrice
+        );
+      }
     },
   },
 };
 </script>
 
-<style scoped>
-.vue-slider {
-  background-color: #e9e9e9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+<style lang="scss" scoped>
+.slider {
+  margin-bottom: 1rem !important;
+  .total {
+    margin: 1rem 0 !important;
+  }
 }
-.vue-slider-rail {
-  position: relative;
-  width: 100%;
-  background-color: #e9e9e9;
-  height: 0.8rem !important;
-  border-radius: 1rem;
-}
-.vue-slider-process {
-  z-index: 1;
-  position: absolute;
-  border-radius: 15px;
-  background-color: var(--featured-light) !important;
-  box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
-}
-.vue-slider-dot {
-  z-index: 10;
-  border-radius: 50%;
-  padding: 0.6rem !important;
-  background-color: var(--featured-light) !important;
-  border: 4px solid #fff;
-  box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
-  position: absolute;
-  cursor: pointer;
-}
-.vue-slider-dot-handle {
-  background-color: #3b82f6;
-  border-radius: 50%;
-}
-.vue-slider-mark {
-  position: absolute;
-  text-align: center;
-}
-.vue-slider-mark-step {
-  width: 2px;
-  height: 80%;
-
-  background-color: #dfdfdf;
-  margin: auto;
-}
-
-.h2-hub{
-  margin-bottom: 1.2rem !important;
-}
-
-
 </style>
