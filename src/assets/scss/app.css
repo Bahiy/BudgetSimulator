@@ -21,6 +21,7 @@
   --yellow-light: #f2c335 !important;
   --green-light: rgba(6, 131, 115, 0.09) !important;
   --text-invert: #fff !important;
+  --stroke-heavy-contrast: #2FB490 !important ;
 }
 
 * {
@@ -68,4 +69,7 @@ body {
 }
 .btn-custom:hover {
   background-color: var(--dark-medium) !important;
+}
+.btn-custom:disabled {
+  background-color: var(--light-medium) !important;
 }/*# sourceMappingURL=app.css.map */

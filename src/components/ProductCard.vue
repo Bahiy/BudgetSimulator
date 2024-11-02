@@ -1,5 +1,7 @@
 <template>
-  <div class="product-card">
+  <selected-card v-if="selected" :logoSrc="logoSrc" :title="title" />
+
+  <div class="product-card" v-else>
     <div class="d-flex flex-row w-100 align-items-center">
       <div class="flex-grow-1">
         <div class="product-card-content flex-grow-1">
@@ -23,8 +25,13 @@
         </div>
         <div class="product-card-actions mt-3">
           <span class="price" v-money-format="price"></span>
-          <button type="button" class="btn-custom" @click="addToPlan">
-            <i class="fa fa-plus"></i> {{ buttonText }}
+          <button
+            :disabled="selected"
+            type="button"
+            class="btn-custom"
+            @click="addToPlan"
+          >
+            <i class="fa fa-plus" /> {{ buttonText }}
           </button>
         </div>
       </div>
@@ -33,8 +40,25 @@
 </template>
 
 <script>
+import { useStore } from "@/stores/store";
+import SelectedCard from "./SelectedCard.vue";
 export default {
   name: "ProductCard",
+
+  setup() {
+    const store = useStore(); // Usa o store
+    return { store };
+  },
+
+  components: {
+    SelectedCard,
+  },
+
+  data() {
+    return {
+      selected: false,
+    };
+  },
   props: {
     logoSrc: { type: String, required: true },
     logoAlt: { type: String, default: "product-logo" },
@@ -53,8 +77,8 @@ export default {
   },
   methods: {
     addToPlan() {
-      // Aqui você pode adicionar lógica para adicionar ao plano ou chamar uma função externa
-      this.$root.$emit("PlanSelected::true");
+      this.selected = true;
+      this.store.setSelectedPlan(true)
     },
   },
 };

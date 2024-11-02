@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <vue-slider
-      :disabled="planSelected"
+      :disabled="store.planSelected"
       :tooltip="'none'"
       :height="'1rem'"
       :adsorb="true"
@@ -17,7 +17,7 @@
 
 <script>
 import VueSlider from "vue-slider-component";
-import { usePricesStore } from "@/stores/store"; // Importa o store
+import { useStore } from "@/stores/store"; // Importa o store
 
 export default {
   components: {
@@ -25,7 +25,6 @@ export default {
   },
   data() {
     return {
-      planSelected: false,
       value: 1,
       clientNumbers: [
         1, 2, 3, 4, 5, 10, 20, 30, 50, 80, 100, 150, 200, 250, 300, 350, 400,
@@ -50,15 +49,10 @@ export default {
     };
   },
   setup() {
-    const pricesStore = usePricesStore(); // Usa o store
-    return { pricesStore };
+    const store = useStore(); // Usa o store
+    return { store };
   },
 
-  created() {
-    this.$root.$on("PlanSelected::true", () => {
-      this.planSelected = true;
-    });
-  },
   methods: {
     emitPrices() {
       const clientIndex = this.clientNumbers.indexOf(this.value);
@@ -75,7 +69,7 @@ export default {
         const totalClients = this.value;
 
         // Atualiza os preços no store
-        this.pricesStore.setPrices(
+        this.store.setPrices(
           totalClients,
           xmlhubPrice,
           monitorhubPrice,

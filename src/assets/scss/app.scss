@@ -29,7 +29,7 @@ body {
   font-weight: 600;
 }
 
-.btn-custom{
+.btn-custom {
   background-color: black !important;
   color: var(--text-invert);
   display: inline-flex;
@@ -48,5 +48,7 @@ body {
   &:hover {
     background-color: var(--dark-medium) !important;
   }
+  &:disabled {
+    background-color: var(--light-medium) !important;
+  }
 }
-

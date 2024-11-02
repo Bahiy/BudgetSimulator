@@ -3,6 +3,7 @@
     <main class="main-content">
       <h2 class="h2-hub mb-4">Monte seu plano</h2>
       <h4 class="h4-hub mb-4">Selecione a quantidade de clientes</h4>
+
       <layout-slider />
 
       <ProductCard
@@ -29,9 +30,8 @@
         ]"
         :imageSrc="monitorHubImage"
         imageAlt="MonitorHub"
-        :price="priceStore.monitorhubFinalPrice"
+        :price="store.monitorhubFinalPrice"
         buttonText="Adicionar ao plano"
-        @add-to-plan="handleAddToPlan"
       />
 
       <ProductCard
@@ -58,9 +58,8 @@
         ]"
         :imageSrc="ConnectHubImage"
         imageAlt="MonitorHub"
-        :price="priceStore.connecthubFinalPrice"
+        :price="store.connecthubFinalPrice"
         buttonText="Adicionar ao plano"
-        @add-to-plan="handleAddToPlan"
       />
       <ProductCard
         :logoSrc="XmlHubLogo"
@@ -86,9 +85,8 @@
         ]"
         :imageSrc="XmlHubImage"
         imageAlt="MonitorHub"
-        :price="priceStore.xmlhubFinalPrice"
+        :price="store.xmlhubFinalPrice"
         buttonText="Adicionar ao plano"
-        @add-to-plan="handleAddToPlan"
       />
     </main>
     <aside class="sidebar">
@@ -96,35 +94,33 @@
         <div class="d-flex flex-column">
           <h2 class="h2-hub mb-3">Seu plano</h2>
 
-          <div v-if="planSelected">
-            <div
-              class="mb-5"
-              style="display: flex; flex-direction: column; gap: 16px"
-            >
-              <div class="client-badge d-flex flex-row justify-content-between">
-                <h2 class="h2-hub mb-0 client-text">600 clientes</h2>
-                <div style="display: flex; align-items: center; gap: 8px">
-                  <h2 class="h2-hub mb-0 client-text light">1 produto</h2>
-                </div>
+          <div
+            class="mb-5"
+            style="display: flex; flex-direction: column; gap: 16px"
+          >
+            <div class="client-badge d-flex flex-row justify-content-between">
+              <h2 class="h2-hub mb-0 client-text">600 clientes</h2>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <h2 class="h2-hub mb-0 client-text light">1 produto</h2>
               </div>
-              <div class="product-checkout-card">
-                <img :src="monitorHubLogo" alt="monitorhub-logo" />
-                <div class="inner-container">
-                  <span
-                    class="price"
-                    v-money-format="priceStore.monitorhubFinalPrice"
-                  ></span>
-                </div>
-              </div>
-              <button
-                type="button"
-                class="w-100 custom-button big custom-button-secondary"
-              >
-                Limpar carrinho
-              </button>
             </div>
+            <div class="product-checkout-card">
+              <img :src="monitorHubLogo" alt="monitorhub-logo" />
+              <div class="inner-container">
+                <span
+                  class="price"
+                  v-money-format="store.monitorhubFinalPrice"
+                ></span>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="w-100 custom-button big custom-button-secondary"
+            >
+              Limpar carrinho
+            </button>
           </div>
-          <div class="d-flex flex-row gap-8" v-else>
+          <div class="d-flex flex-row gap-8">
             <p class="p text-color-primary">
               Vamos montar seu plano? Selecione um produto à esquerda.
             </p>
@@ -139,7 +135,7 @@
 import LayoutSlider from "./LayoutSlider.vue";
 import ProductCard from "../ProductCard.vue";
 
-import { usePricesStore } from "@/stores/store";
+import { useStore } from "@/stores/store";
 
 import monitorHubLogo from "@/assets/cards/monitorHubSVG.svg";
 import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
@@ -152,6 +148,10 @@ export default {
     LayoutSlider,
     ProductCard,
   },
+  setup() {
+    const store = useStore(); // Usa o store
+    return { store };
+  },
   data() {
     return {
       monitorHubLogo,
@@ -160,14 +160,7 @@ export default {
       ConnectHubImage,
       XmlHubLogo,
       XmlHubImage,
-      planSelected: true,
-      priceStore: usePricesStore(),
     };
-  },
-  methods: {
-    handleAddToPlan() {
-      console.log("Produto adicionado ao plano!");
-    },
   },
 };
 </script>
