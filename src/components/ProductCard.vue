@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="product-card-actions mt-3">
-          <span class="price">{{ price }}</span>
+          <span class="price" v-money-format="price"></span>
           <button type="button" class="btn-custom" @click="addToPlan">
             <i class="fa fa-plus"></i> {{ buttonText }}
           </button>
@@ -54,7 +54,7 @@ export default {
   methods: {
     addToPlan() {
       // Aqui você pode adicionar lógica para adicionar ao plano ou chamar uma função externa
-      this.$emit("add-to-plan");
+      this.$root.$emit("PlanSelected::true");
     },
   },
 };
@@ -92,7 +92,6 @@ export default {
     display: flex;
     justify-content: space-between !important;
   }
-
 }
 .product-card-actions {
   display: flex;

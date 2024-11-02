@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 #app {
-  min-height: 100vh;
+  min-height: 100vh !important;
   color: var(--darker);
   background-color: var(--light);
 }

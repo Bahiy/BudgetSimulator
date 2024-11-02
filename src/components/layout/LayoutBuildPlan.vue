@@ -5,7 +5,6 @@
       <h4 class="h4-hub mb-4">Selecione a quantidade de clientes</h4>
       <layout-slider />
 
-
       <ProductCard
         :logoSrc="monitorHubLogo"
         logoAlt="MonitorHub Logo"
@@ -30,7 +29,7 @@
         ]"
         :imageSrc="monitorHubImage"
         imageAlt="MonitorHub"
-        price="R$ 38,81"
+        :price="priceStore.monitorhubFinalPrice"
         buttonText="Adicionar ao plano"
         @add-to-plan="handleAddToPlan"
       />
@@ -59,12 +58,12 @@
         ]"
         :imageSrc="ConnectHubImage"
         imageAlt="MonitorHub"
-        price="R$ 87,33"
+        :price="priceStore.connecthubFinalPrice"
         buttonText="Adicionar ao plano"
         @add-to-plan="handleAddToPlan"
       />
       <ProductCard
-        :logoSrc="monitorHubLogo"
+        :logoSrc="XmlHubLogo"
         logoAlt="MonitorHub Logo"
         title="Gerencie pendências fiscais da emissão ao rastreio de envio"
         :features="[
@@ -85,10 +84,9 @@
             description: 'para disparo WhatsApp',
           },
         ]"
-        :imageSrc="monitorHubImage"
+        :imageSrc="XmlHubImage"
         imageAlt="MonitorHub"
-        price="R$ 67,92
-"
+        :price="priceStore.xmlhubFinalPrice"
         buttonText="Adicionar ao plano"
         @add-to-plan="handleAddToPlan"
       />
@@ -97,7 +95,36 @@
       <div class="d-flex flex-column justify-content-between h-100">
         <div class="d-flex flex-column">
           <h2 class="h2-hub mb-3">Seu plano</h2>
-          <div class="d-flex flex-row gap-8">
+
+          <div v-if="planSelected">
+            <div
+              class="mb-5"
+              style="display: flex; flex-direction: column; gap: 16px"
+            >
+              <div class="client-badge d-flex flex-row justify-content-between">
+                <h2 class="h2-hub mb-0 client-text">600 clientes</h2>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <h2 class="h2-hub mb-0 client-text light">1 produto</h2>
+                </div>
+              </div>
+              <div class="product-checkout-card">
+                <img :src="monitorHubLogo" alt="monitorhub-logo" />
+                <div class="inner-container">
+                  <span
+                    class="price"
+                    v-money-format="priceStore.monitorhubFinalPrice"
+                  ></span>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="w-100 custom-button big custom-button-secondary"
+              >
+                Limpar carrinho
+              </button>
+            </div>
+          </div>
+          <div class="d-flex flex-row gap-8" v-else>
             <p class="p text-color-primary">
               Vamos montar seu plano? Selecione um produto à esquerda.
             </p>
@@ -112,10 +139,14 @@
 import LayoutSlider from "./LayoutSlider.vue";
 import ProductCard from "../ProductCard.vue";
 
+import { usePricesStore } from "@/stores/store";
+
 import monitorHubLogo from "@/assets/cards/monitorHubSVG.svg";
 import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
 import ConnectHubLogo from "@/assets/cards/connectHub.svg";
 import ConnectHubImage from "@/assets/cards/ConnectHub.jpg";
+import XmlHubLogo from "@/assets/cards/xmlhub.svg";
+import XmlHubImage from "@/assets/cards/XMLHub.jpg";
 export default {
   components: {
     LayoutSlider,
@@ -127,13 +158,13 @@ export default {
       monitorHubImage,
       ConnectHubLogo,
       ConnectHubImage,
+      XmlHubLogo,
+      XmlHubImage,
+      planSelected: true,
+      priceStore: usePricesStore(),
     };
   },
   methods: {
-    updateVolume() {
-      // Aqui você pode adicionar lógica para ajustar o volume de um elemento de áudio
-      console.log("Volume atual:", this.volume);
-    },
     handleAddToPlan() {
       console.log("Produto adicionado ao plano!");
     },
@@ -146,16 +177,18 @@ export default {
   background-color: #f2f3f8;
   margin-left: 16rem !important;
   display: flex;
-  flex: 1;
-  height: 100vh;
+  height: 100vh !important;
   .main-content {
-    overflow: hidden auto;
+    overflow: auto;
     padding: 3rem !important;
-    width: 70% !important;
+    width: 65% !important;
+  }
+  .main-content::-webkit-scrollbar {
+    text-decoration: none;
   }
   .sidebar {
-    width: 37.5rem;
-    height: 100% !important;
+    width: 40% !important;
+    max-width: 600px;
     background: var(--surface-primary, #fff);
     border-left: 1px solid var(--stroke-contrast, #e6e6e6);
     padding: 3rem !important;
