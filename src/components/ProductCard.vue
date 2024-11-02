@@ -42,11 +42,12 @@
 <script>
 import { useStore } from "@/stores/store";
 import SelectedCard from "./SelectedCard.vue";
+
 export default {
   name: "ProductCard",
 
   setup() {
-    const store = useStore(); // Usa o store
+    const store = useStore();
     return { store };
   },
 
@@ -78,7 +79,27 @@ export default {
   methods: {
     addToPlan() {
       this.selected = true;
-      this.store.setSelectedPlan(true)
+      this.store.setRange(true);
+
+      if (this.logoAlt === "MonitorHub") {
+        this.store.setSelectedPlan(
+          this.store.xmlSelected,
+          true,
+          this.store.connectSelected
+        );
+      } else if (this.logoAlt === "ConnectHub") {
+        this.store.setSelectedPlan(
+          this.store.xmlSelected,
+          this.store.monitorSelected,
+          true
+        );
+      } else if (this.logoAlt === "xmlHub") {
+        this.store.setSelectedPlan(
+          true,
+          this.store.monitorSelected,
+          this.store.connectSelected
+        );
+      }
     },
   },
 };
@@ -94,7 +115,7 @@ export default {
   gap: 3rem;
   align-self: stretch;
   border-radius: 1rem;
-  border: 1px solid var(--stroke-heavy-contrast, #cbd5e1);
+  border: 1px solid #cbd5e1;
   background: var(--surface-primary, #fff);
 
   .product-card-data-layout {

@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <vue-slider
-      :disabled="store.planSelected"
+      :disabled="store.disableRange"
       :tooltip="'none'"
       :height="'1rem'"
       :adsorb="true"

@@ -39,7 +39,7 @@ export default {
   gap: 3rem;
   align-self: stretch;
   border-radius: 1rem;
-  border: 1px solid var(--stroke-heavy-contrast, #cbd5e1);
+  border: 2px solid var(--stroke-heavy-contrast, #cbd5e1) !important;
   background-image: linear-gradient(
     290deg,
     #c0f2e4,

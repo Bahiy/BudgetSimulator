@@ -73,6 +73,7 @@ export default {};
 
       .name-user,
       .emissions-user {
+        letter-spacing: 1px !important;
         font-size: 11px;
         font-weight: 600 !important;
         margin: 3px 0 !important;

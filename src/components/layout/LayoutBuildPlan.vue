@@ -8,7 +8,7 @@
 
       <ProductCard
         :logoSrc="monitorHubLogo"
-        logoAlt="MonitorHub Logo"
+        logoAlt="MonitorHub"
         title="Gerencie pendências fiscais da emissão ao rastreio de envio"
         :features="[
           {
@@ -36,7 +36,7 @@
 
       <ProductCard
         :logoSrc="ConnectHubLogo"
-        logoAlt="MonitorHub Logo"
+        logoAlt="ConnectHub"
         title=" Disparo automático com integração WhatsApp e E-mail "
         :features="[
           {
@@ -57,13 +57,13 @@
           },
         ]"
         :imageSrc="ConnectHubImage"
-        imageAlt="MonitorHub"
+        imageAlt="ConnectHub"
         :price="store.connecthubFinalPrice"
         buttonText="Adicionar ao plano"
       />
       <ProductCard
         :logoSrc="XmlHubLogo"
-        logoAlt="MonitorHub Logo"
+        logoAlt="xmlHub"
         title="Gerencie pendências fiscais da emissão ao rastreio de envio"
         :features="[
           {
@@ -84,50 +84,13 @@
           },
         ]"
         :imageSrc="XmlHubImage"
-        imageAlt="MonitorHub"
+        imageAlt="xmlHub"
         :price="store.xmlhubFinalPrice"
         buttonText="Adicionar ao plano"
       />
     </main>
-    <aside class="sidebar">
-      <div class="d-flex flex-column justify-content-between h-100">
-        <div class="d-flex flex-column">
-          <h2 class="h2-hub mb-3">Seu plano</h2>
+    <LayoutSideBar/>
 
-          <div
-            class="mb-5"
-            style="display: flex; flex-direction: column; gap: 16px"
-          >
-            <div class="client-badge d-flex flex-row justify-content-between">
-              <h2 class="h2-hub mb-0 client-text">600 clientes</h2>
-              <div style="display: flex; align-items: center; gap: 8px">
-                <h2 class="h2-hub mb-0 client-text light">1 produto</h2>
-              </div>
-            </div>
-            <div class="product-checkout-card">
-              <img :src="monitorHubLogo" alt="monitorhub-logo" />
-              <div class="inner-container">
-                <span
-                  class="price"
-                  v-money-format="store.monitorhubFinalPrice"
-                ></span>
-              </div>
-            </div>
-            <button
-              type="button"
-              class="w-100 custom-button big custom-button-secondary"
-            >
-              Limpar carrinho
-            </button>
-          </div>
-          <div class="d-flex flex-row gap-8">
-            <p class="p text-color-primary">
-              Vamos montar seu plano? Selecione um produto à esquerda.
-            </p>
-          </div>
-        </div>
-      </div>
-    </aside>
   </div>
 </template>
 
@@ -138,15 +101,19 @@ import ProductCard from "../ProductCard.vue";
 import { useStore } from "@/stores/store";
 
 import monitorHubLogo from "@/assets/cards/monitorHubSVG.svg";
-import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
 import ConnectHubLogo from "@/assets/cards/connectHub.svg";
-import ConnectHubImage from "@/assets/cards/ConnectHub.jpg";
 import XmlHubLogo from "@/assets/cards/xmlhub.svg";
+
+import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
+import ConnectHubImage from "@/assets/cards/ConnectHub.jpg";
 import XmlHubImage from "@/assets/cards/XMLHub.jpg";
+
+import LayoutSideBar from "./LayoutSideBar.vue";
 export default {
   components: {
     LayoutSlider,
     ProductCard,
+    LayoutSideBar,
   },
   setup() {
     const store = useStore(); // Usa o store
@@ -155,10 +122,10 @@ export default {
   data() {
     return {
       monitorHubLogo,
-      monitorHubImage,
       ConnectHubLogo,
-      ConnectHubImage,
       XmlHubLogo,
+      monitorHubImage,
+      ConnectHubImage,
       XmlHubImage,
     };
   },
@@ -178,15 +145,6 @@ export default {
   }
   .main-content::-webkit-scrollbar {
     text-decoration: none;
-  }
-  .sidebar {
-    width: 40% !important;
-    max-width: 600px;
-    background: var(--surface-primary, #fff);
-    border-left: 1px solid var(--stroke-contrast, #e6e6e6);
-    padding: 3rem !important;
-    align-items: flex-start;
-    overflow-y: auto;
   }
 }
 </style>

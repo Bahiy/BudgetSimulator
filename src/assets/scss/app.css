@@ -2,26 +2,27 @@
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 :root {
-  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a);
+  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a) !important;
+  --background-gray: #f2f3f8;
   --dark: #000000 !important;
-  --darker: #222 !important;
-  --dark-medium: #444 !important;
   --dark-low: #666 !important;
+  --dark-medium: #444 !important;
+  --darker: #222 !important;
+  --featured: #068373 !important;
+  --featured-dark: #065247 !important;
+  --featured-light: #13cf9a !important;
+  --green-light: rgba(6, 131, 115, 0.09) !important;
+  --light: #fff !important;
   --light-low: #999 !important;
   --light-medium: #ddd !important;
   --ligther: #ccc !important;
-  --light: #fff !important;
   --primary: #068373 !important;
-  --featured: #068373 !important;
-  --featured-light: #13cf9a !important;
-  --featured-dark: #065247 !important;
-  --background-gray: #f2f3f8;
-  --red-light: #e87979 !important;
   --red-background: #fae4e4 !important;
-  --yellow-light: #f2c335 !important;
-  --green-light: rgba(6, 131, 115, 0.09) !important;
+  --red-light: #e87979 !important;
+  --stroke-heavy-contrast: #2fb490 !important;
   --text-invert: #fff !important;
-  --stroke-heavy-contrast: #2FB490 !important ;
+  --text-primary: #1e293b !important;
+  --yellow-light: #f2c335 !important;
 }
 
 * {
@@ -51,7 +52,7 @@ body {
 }
 
 .btn-custom {
-  background-color: black !important;
+  background-color: black;
   color: var(--text-invert);
   display: inline-flex;
   align-items: center;
@@ -68,8 +69,25 @@ body {
   cursor: pointer;
 }
 .btn-custom:hover {
-  background-color: var(--dark-medium) !important;
+  background-color: var(--dark-medium);
 }
 .btn-custom:disabled {
-  background-color: var(--light-medium) !important;
+  background-color: var(--light-medium);
+}
+
+.btn-custom-secondary {
+  background-color: #f1f5f9;
+  border: 1px solid #94a3b8;
+  color: #1e293b;
+  border-radius: 0.5rem;
+}
+.btn-custom-secondary:hover {
+  background-color: #cbd5e1;
+}
+
+.big {
+  height: 3rem !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
 }/*# sourceMappingURL=app.css.map */

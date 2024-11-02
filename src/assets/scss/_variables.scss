@@ -2,24 +2,25 @@ $featured: #e9f4f2 !important;
 $featured-dark: #13cf9a !important;
 
 :root {
-  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a);
+  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a) !important;
+  --background-gray: #f2f3f8;
   --dark: #000000 !important;
-  --darker: #222 !important;
-  --dark-medium: #444 !important;
   --dark-low: #666 !important;
+  --dark-medium: #444 !important;
+  --darker: #222 !important;
+  --featured: #068373 !important;
+  --featured-dark: #065247 !important;
+  --featured-light: #13cf9a !important;
+  --green-light: rgba(6, 131, 115, 0.09) !important;
+  --light: #fff !important;
   --light-low: #999 !important;
   --light-medium: #ddd !important;
   --ligther: #ccc !important;
-  --light: #fff !important;
   --primary: #068373 !important;
-  --featured: #068373 !important;
-  --featured-light: #13cf9a !important;
-  --featured-dark: #065247 !important;
-  --background-gray: #f2f3f8;
-  --red-light: #e87979 !important;
   --red-background: #fae4e4 !important;
-  --yellow-light: #f2c335 !important;
-  --green-light: rgba(6, 131, 115, 0.09) !important;
+  --red-light: #e87979 !important;
+  --stroke-heavy-contrast: #2fb490 !important;
   --text-invert: #fff !important;
-  --stroke-heavy-contrast: #2FB490 !important
+  --text-primary: #1e293b !important;
+  --yellow-light: #f2c335 !important;
 }
