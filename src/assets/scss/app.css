@@ -31,9 +31,8 @@
 }
 
 body {
-  zoom: 86% !important;
+  zoom: 80% !important;
   background-color: var(--background-gray) !important;
-  cursor: pointer !important;
   overflow: auto !important;
 }
 
