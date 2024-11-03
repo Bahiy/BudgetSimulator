@@ -108,12 +108,11 @@ export default {
 
 <style lang="scss" scoped>
 .product-card {
-  margin-bottom: 3rem !important;
+  margin-bottom: 1rem !important;
   display: flex;
   padding: 3rem !important;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3rem;
   align-self: stretch;
   border-radius: 1rem;
   border: 1px solid #cbd5e1;

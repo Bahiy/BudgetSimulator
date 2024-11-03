@@ -31,7 +31,7 @@ export default {
 
 <style scoped lang="scss">
 .product-card {
-  margin-bottom: 3rem !important;
+  margin-bottom: 1rem !important;
   display: flex;
   padding: 3rem !important;
   flex-direction: column;
