@@ -8,6 +8,7 @@ export const useStore = defineStore("pricesStore", {
     disableRange: false,
     enableCard: false,
     totalClients: 1,
+    totalProducts: 0,
     xmlhubFinalPrice: 67.92,
     connecthubFinalPrice: 38.81,
     monitorhubFinalPrice: 87.33,
@@ -23,6 +24,14 @@ export const useStore = defineStore("pricesStore", {
       this.xmlSelected = xmlhub;
       this.monitorSelected = monitorhub;
       this.connectSelected = connecthub;
+
+      // Reseta o contador de produtos
+      this.totalProducts = 0;
+
+      // Incrementa totalProducts conforme os produtos selecionados
+      if (this.monitorSelected) this.totalProducts += 1;
+      if (this.connectSelected) this.totalProducts += 1;
+      if (this.xmlSelected) this.totalProducts += 1;
     },
     setPrices(clients, xmlhub, monitorhub, connecthub) {
       this.totalClients = clients;
@@ -31,6 +40,7 @@ export const useStore = defineStore("pricesStore", {
       this.connecthubFinalPrice = connecthub;
     },
   },
+
   getters: {
     totalPrice() {
       let total = 0;

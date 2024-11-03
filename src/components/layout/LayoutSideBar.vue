@@ -1,6 +1,6 @@
 <template>
   <aside class="sidebar">
-    <div class="d-flex flex-column justify-content-between teste">
+    <div class="d-flex flex-column justify-content-between h-100">
       <div class="d-flex flex-column">
         <h2 class="h2-hub mb-3">Seu plano</h2>
 
@@ -16,7 +16,11 @@
               {{ store.totalClients }} clientes
             </h2>
             <div style="display: flex; align-items: center; gap: 8px">
-              <h2 class="h2-hub mb-0 client-text light">1 produto</h2>
+              <h2 class="h2-hub mb-0 client-text light">
+                {{ store.totalProducts }} produto{{
+                  store.totalProducts > 1 ? "s" : ""
+                }}
+              </h2>
             </div>
           </div>
           <div v-if="store.monitorSelected" class="product-checkout-card">
@@ -53,14 +57,16 @@
           >
             Limpar carrinho
           </button>
-          <div class="d-flex flex-column align-items-end footer">
+          <div class="d-flex flex-column align-items-end">
             <h2 class="h2-hub">Total</h2>
             <h3 class="h3-hub mb-1">
               <span v-money-format="store.totalPrice"></span>
               por mês
             </h3>
-            <div  class="mb-4 text-color-brand-contrast">
-              <span v-money-format="store.totalPrice/store.totalClients"></span>
+            <div class="mb-4 text-color-brand-contrast">
+              <span
+                v-money-format="store.totalPrice / store.totalClients"
+              ></span>
               por cliente
             </div>
           </div>
@@ -142,6 +148,5 @@ export default {
       font-weight: 600;
     }
   }
-
 }
 </style>

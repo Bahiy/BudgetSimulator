@@ -64,7 +64,7 @@
             description: ' com reconhecimento de guias automático',
           },
           {
-            title: '10 GB',
+            title: `${formatNumber(store.totalClients)} GB`,
             description: ' de armazenamento para arquivos',
           },
         ]"
@@ -94,7 +94,7 @@
           },
           {
             title: 'XMLCloud para',
-            description: '800.000 XMLs/mês',
+            description: `${formatNumber(400*store.totalClients)} XMLs/mês`,
           },
           {
             title: 'Relatório dinâmico',
@@ -106,7 +106,7 @@
           },
           {
             title: 'Busca automatizada',
-            description: 'para 400.000 XMLs/mês',
+            description: `para ${formatNumber(200*store.totalClients)} XMLs/mês`,
           },
         ]"
         :imageSrc="XmlHubImage"
@@ -155,6 +155,11 @@ export default {
       ConnectHubImage,
       XmlHubImage,
     };
+  },
+  methods: {
+    formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Formata o número
+    },
   },
 };
 </script>
