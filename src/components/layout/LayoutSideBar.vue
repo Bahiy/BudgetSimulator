@@ -53,6 +53,15 @@
           >
             Limpar carrinho
           </button>
+          <div class="d-flex flex-column align-items-end">
+            <h2 class="h2-hub">Total</h2>
+            <h3 v-money-format="store.totalPrice" class="h3-hub mb-1">
+              por mês
+            </h3>
+            <p v-money-format="store.totalPrice/store.totalClients" class="mb-4 text-color-brand-contrast">
+              por cliente
+            </p>
+          </div>
         </div>
         <div v-else class="d-flex flex-row gap-8">
           <p class="p text-color-primary">
@@ -77,10 +86,6 @@ export default {
     return { store };
   },
 
-  props: {
-    finalPrice: { type: String, required: true },
-    logo: { type: String, required: true },
-  },
   data() {
     return {
       monitorHubLogo,
@@ -91,10 +96,9 @@ export default {
 
   methods: {
     resetForm() {
-      this.store.setPrices(1, "67.92", "38.81", "87.33");
       this.store.setRange(false);
       this.store.setSelectedPlan(false, false, false);
-      this.store.setCard(false)
+      this.store.setCard(false);
     },
   },
 };

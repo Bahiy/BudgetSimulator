@@ -24,7 +24,7 @@ export default {
   props: {
     logoSrc: { type: String, required: true },
     logoAlt: { type: String, default: "product-logo" },
-    title: { type: String, required: true },
+    title: { type: String },
   },
 };
 </script>

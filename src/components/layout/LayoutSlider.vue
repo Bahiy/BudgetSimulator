@@ -68,6 +68,7 @@ export default {
         ).toFixed(2);
         const totalClients = this.value;
 
+
         // Atualiza os preços no store
         this.store.setPrices(
           totalClients,

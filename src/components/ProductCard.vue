@@ -1,7 +1,5 @@
 <template>
-  <selected-card v-if="selected" :logoSrc="logoSrc" :title="title" />
-
-  <div class="product-card" v-else>
+  <div class="product-card">
     <div class="d-flex flex-row w-100 align-items-center">
       <div class="flex-grow-1">
         <div class="product-card-content flex-grow-1">
@@ -24,7 +22,8 @@
           </div>
         </div>
         <div class="product-card-actions mt-3">
-          <span class="price" v-money-format="price"></span>
+          <span class="price" v-money-format="price.toString()"></span>
+
           <button
             :disabled="selected"
             type="button"
@@ -73,7 +72,7 @@ export default {
     },
     imageSrc: { type: String, required: true },
     imageAlt: { type: String, default: "" },
-    price: { type: String, required: true },
+    price: { type: [Number, String], required: true },
     buttonText: { type: String, default: "Adicionar ao plano" },
   },
   methods: {
@@ -100,6 +99,8 @@ export default {
           this.store.connectSelected
         );
       }
+      console.log(typeof this.store.totalPrice);
+      console.log(this.store.totalPrice);
     },
   },
 };
@@ -130,6 +131,10 @@ export default {
 
     .content {
       padding: 10px 15px 15px 3rem !important;
+
+      .p-bold {
+        font-weight: 600;
+      }
     }
   }
 

@@ -5,8 +5,14 @@
       <h4 class="h4-hub mb-4">Selecione a quantidade de clientes</h4>
 
       <layout-slider />
+      <selected-card
+        v-if="store.monitorSelected"
+        :logoSrc="monitorHubLogo"
+        title="Gerencie pendências fiscais da emissão ao rastreio de envio"
+      />
 
       <ProductCard
+        v-else
         :logoSrc="monitorHubLogo"
         logoAlt="MonitorHub"
         title="Gerencie pendências fiscais da emissão ao rastreio de envio"
@@ -34,7 +40,13 @@
         buttonText="Adicionar ao plano"
       />
 
+      <selected-card
+        v-if="store.connectSelected"
+        :logoSrc="ConnectHubLogo"
+        title="Gerencie pendências fiscais da emissão ao rastreio de envio"
+      />
       <ProductCard
+        v-else
         :logoSrc="ConnectHubLogo"
         logoAlt="ConnectHub"
         title=" Disparo automático com integração WhatsApp e E-mail "
@@ -52,7 +64,7 @@
             description: ' com reconhecimento de guias automático',
           },
           {
-            title: '1 GB',
+            title: '10 GB',
             description: ' de armazenamento para arquivos',
           },
         ]"
@@ -61,26 +73,40 @@
         :price="store.connecthubFinalPrice"
         buttonText="Adicionar ao plano"
       />
+      <selected-card
+        v-if="store.xmlSelected"
+        :logoSrc="XmlHubLogo"
+        title="Gerencie pendências fiscais da emissão ao rastreio de envio"
+      />
       <ProductCard
+        v-else
         :logoSrc="XmlHubLogo"
         logoAlt="xmlHub"
-        title="Gerencie pendências fiscais da emissão ao rastreio de envio"
+        title="Busca de XMLs com segurança e relatórios dinâmicos"
         :features="[
           {
-            title: 'Busque documentos do e-CAC',
-            description: 'e outros sites',
+            title: 'Busca automática de',
+            description: 'NF-e, CT-e*, CF-e SP*',
           },
           {
-            title: 'Envie guias e pendências',
-            description: 'automaticamente aos seus clientes',
+            title: 'Monitoramento de notas faltantes',
+            description: 'por série',
           },
           {
-            title: 'Cuide de milhares de clientes',
-            description: 'com facilidade',
+            title: 'XMLCloud para',
+            description: '800.000 XMLs/mês',
           },
           {
-            title: 'Integração connecthub',
-            description: 'para disparo WhatsApp',
+            title: 'Relatório dinâmico',
+            description: 'para empresas/contador',
+          },
+          {
+            title: 'Proteção de manifestação automática',
+            description: 'para empresas',
+          },
+          {
+            title: 'Busca automatizada',
+            description: 'para 400.000 XMLs/mês',
           },
         ]"
         :imageSrc="XmlHubImage"
@@ -89,14 +115,15 @@
         buttonText="Adicionar ao plano"
       />
     </main>
-    <LayoutSideBar/>
-
+    <LayoutSideBar />
   </div>
 </template>
 
 <script>
 import LayoutSlider from "./LayoutSlider.vue";
+import LayoutSideBar from "./LayoutSideBar.vue";
 import ProductCard from "../ProductCard.vue";
+import SelectedCard from "../SelectedCard.vue";
 
 import { useStore } from "@/stores/store";
 
@@ -108,12 +135,12 @@ import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
 import ConnectHubImage from "@/assets/cards/ConnectHub.jpg";
 import XmlHubImage from "@/assets/cards/XMLHub.jpg";
 
-import LayoutSideBar from "./LayoutSideBar.vue";
 export default {
   components: {
     LayoutSlider,
     ProductCard,
     LayoutSideBar,
+    SelectedCard,
   },
   setup() {
     const store = useStore(); // Usa o store
