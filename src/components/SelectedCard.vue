@@ -1,5 +1,5 @@
 <template>
-  <div class="product-card">
+  <div :style="bgColor" class="product-card">
     <div class="d-flex flex-row w-100 align-items-center">
       <div class="flex-grow-1">
         <div class="product-card-content flex-grow-1">
@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="added">
-        <i style="color: var(--stroke-heavy-contrast)" class="fa fa-check" />
-        Adicionado
+        <i :style="iconColor" :class="styling" />
+        {{ text }}
       </div>
     </div>
   </div>
@@ -25,6 +25,14 @@ export default {
     logoSrc: { type: String, required: true },
     logoAlt: { type: String, default: "product-logo" },
     title: { type: String },
+    text: { type: String, default: "Adicionado" },
+    styling: { type: String, default: "fa fa-check" },
+    iconColor: { type: String, default: "color: var(--stroke-heavy-contrast)" },
+    bgColor: {
+      type: String,
+      default:
+        "background-image: var(--background-image-deafult); border: 2px solid var(--stroke-heavy-contrast);",
+    },
   },
 };
 </script>
@@ -39,21 +47,6 @@ export default {
   gap: 3rem;
   align-self: stretch;
   border-radius: 1rem;
-  border: 2px solid var(--stroke-heavy-contrast, #cbd5e1) !important;
-  background-image: linear-gradient(
-    290deg,
-    #c0f2e4,
-    #c5f2e6 14%,
-    #cdf4ea 24%,
-    #d1f5eb 31%,
-    #d9f7ef 37%,
-    #def8f0 43%,
-    #e6f9f5 50%,
-    #eafbf7 57%,
-    #f3fcf9 65%,
-    #fbfefd 77%,
-    #fff
-  ) !important;
 
   .product-card-data-layout {
     display: flex;

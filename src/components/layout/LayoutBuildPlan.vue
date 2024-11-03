@@ -94,7 +94,7 @@
           },
           {
             title: 'XMLCloud para',
-            description: `${formatNumber(400*store.totalClients)} XMLs/mês`,
+            description: `${formatNumber(400 * store.totalClients)} XMLs/mês`,
           },
           {
             title: 'Relatório dinâmico',
@@ -106,13 +106,24 @@
           },
           {
             title: 'Busca automatizada',
-            description: `para ${formatNumber(200*store.totalClients)} XMLs/mês`,
+            description: `para ${formatNumber(
+              200 * store.totalClients
+            )} XMLs/mês`,
           },
         ]"
         :imageSrc="XmlHubImage"
         imageAlt="xmlHub"
         :price="store.xmlhubFinalPrice"
         buttonText="Adicionar ao plano"
+      />
+      <selected-card
+        class="taskhub"
+        :bgColor="' background-color: #FBFBFD;border: 2px solid #cbd5e1;opacity: .7;'"
+        :iconColor="'color: rgb(148, 163, 184)'"
+        :text="'Em breve'"
+        :logoSrc="TaskHubLogo"
+        title=" O verdadeiro gestor de processos para contabilidades "
+        :styling="'fa fa-clock'"
       />
     </main>
     <LayoutSideBar />
@@ -130,6 +141,7 @@ import { useStore } from "@/stores/store";
 import monitorHubLogo from "@/assets/cards/monitorHubSVG.svg";
 import ConnectHubLogo from "@/assets/cards/connectHub.svg";
 import XmlHubLogo from "@/assets/cards/xmlhub.svg";
+import TaskHubLogo from "@/assets/cards/taskhub.svg";
 
 import monitorHubImage from "@/assets/cards/MonitorHub.jpg";
 import ConnectHubImage from "@/assets/cards/ConnectHub.jpg";
@@ -151,6 +163,7 @@ export default {
       monitorHubLogo,
       ConnectHubLogo,
       XmlHubLogo,
+      TaskHubLogo,
       monitorHubImage,
       ConnectHubImage,
       XmlHubImage,
@@ -175,6 +188,7 @@ export default {
     padding: 3rem !important;
     width: 65% !important;
   }
+
   .main-content::-webkit-scrollbar {
     text-decoration: none;
   }

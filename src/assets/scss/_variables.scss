@@ -2,7 +2,26 @@ $featured: #e9f4f2 !important;
 $featured-dark: #13cf9a !important;
 
 :root {
-  --background-gradient: linear-gradient(90deg, #068373, #068373 0, #13cf9a) !important;
+  --background-image-deafult: linear-gradient(
+    290deg,
+    #c0f2e4,
+    #c5f2e6 14%,
+    #cdf4ea 24%,
+    #d1f5eb 31%,
+    #d9f7ef 37%,
+    #def8f0 43%,
+    #e6f9f5 50%,
+    #eafbf7 57%,
+    #f3fcf9 65%,
+    #fbfefd 77%,
+    #fff
+  );
+  --background-gradient: linear-gradient(
+    90deg,
+    #068373,
+    #068373 0,
+    #13cf9a
+  ) !important;
   --background-gray: #f2f3f8;
   --dark: #000000 !important;
   --dark-low: #666 !important;
