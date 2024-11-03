@@ -1,6 +1,6 @@
 <template>
   <aside class="sidebar">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="d-flex flex-column justify-content-between teste">
       <div class="d-flex flex-column">
         <h2 class="h2-hub mb-3">Seu plano</h2>
 
@@ -53,14 +53,16 @@
           >
             Limpar carrinho
           </button>
-          <div class="d-flex flex-column align-items-end">
+          <div class="d-flex flex-column align-items-end footer">
             <h2 class="h2-hub">Total</h2>
-            <h3 v-money-format="store.totalPrice" class="h3-hub mb-1">
+            <h3 class="h3-hub mb-1">
+              <span v-money-format="store.totalPrice"></span>
               por mês
             </h3>
-            <p v-money-format="store.totalPrice/store.totalClients" class="mb-4 text-color-brand-contrast">
+            <div  class="mb-4 text-color-brand-contrast">
+              <span v-money-format="store.totalPrice/store.totalClients"></span>
               por cliente
-            </p>
+            </div>
           </div>
         </div>
         <div v-else class="d-flex flex-row gap-8">
@@ -140,5 +142,6 @@ export default {
       font-weight: 600;
     }
   }
+
 }
 </style>
