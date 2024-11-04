@@ -33,6 +33,6 @@ export default {
   overflow: hidden auto;
   width: 15rem !important;
   height: 100% !important;
-  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.171) !important;
 }
 </style>

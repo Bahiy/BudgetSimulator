@@ -7,6 +7,10 @@ const router = new VueRouter({
   mode: "history",
   routes: [
     {
+      path: "/home",
+      redirect: "/",
+    },
+    {
       path: "/",
       name: "home",
       meta: {

@@ -15,11 +15,15 @@
             <p class="emissions-user">SDR</p>
           </div>
 
-          <div>
-            <button class="btn btn-notify" aria-label="Notificações">
-              <i class="fa-solid fa-bell fa-1x" />
-            </button>
-          </div>
+          <button class="btn btn-notify" aria-label="Notificações">
+            <div
+              class="notifications-counter"
+              style="background-color: rgb(91, 93, 107)"
+            >
+              0
+            </div>
+            <i class="fa-solid fa-bell fa-1x" />
+          </button>
         </div>
       </div>
       <li class="nav-item"><i class="fa-solid fa-fire"></i>Leads</li>
@@ -82,20 +86,35 @@ export default {};
     }
 
     .btn-notify {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative !important;
       padding: 5px 12px !important;
       background-color: var(--light);
       box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-      .notification-counter {
-        padding-top: 2px !important;
-        width: 20px !important;
-        height: 19px !important;
-        border-radius: 5px;
-        margin-top: -20px !important;
-        margin-left: 15px !important;
-        color: #fff;
-        font-size: 10px;
-      }
     }
+
+    .btn-notify .notifications-counter {
+      position: absolute !important;
+      padding-top: 2px !important;
+      width: 20px !important;
+      height: 19px !important;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+      border-radius: 5px;
+      color: #fff;
+      font-size: 10px;
+    }
+  }
+
+  .user-info .user-container .btn-notify {
+    height: 35px !important;
+    width: 40px !important;
+    padding: 10px 10px !important;
+    background-color: #fff;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
   }
 
   .nav-item {
