@@ -5,7 +5,6 @@
         <div class="navigation-sidebar">
           <layout-navigation />
         </div>
-
         <router-view />
       </div>
     </div>
